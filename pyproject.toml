@@ -1,0 +1,18 @@
+[project]
+name = "mangamin"
+version = "1.0"
+description = "A console application for reducing the size of manga by converting scans to webp format."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "click>=8.3.1",
+    "filetype>=1.2.0",
+    "pillow>=12.1.1",
+    "rarfile>=4.2",
+    "tqdm>=4.67.3",
+]
+
+[dependency-groups]
+dev = [
+    "black>=26.1.0",
+]
