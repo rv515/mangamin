@@ -24,7 +24,11 @@ class MangaMin:
     def start(self) -> None:
         self.dest_dir.mkdir(exist_ok=True)
 
-        bar = tqdm(exclude_folders(self.path), desc=self.path.name, bar_format="{desc}: {n_fmt}/{total_fmt}, elapsed time: {elapsed}")
+        bar = tqdm(
+            exclude_folders(self.path),
+            desc=self.path.name,
+            bar_format="{desc}: {n_fmt}/{total_fmt}, elapsed time: {elapsed}",
+        )
 
         for file in bar:
             self.file_prosessing(file)
@@ -48,7 +52,9 @@ class MangaMin:
         for file in exclude_folders(unpacking_folder):
             self.file_prosessing(file)
         shutil.rmtree(unpacking_folder)
-        loc_mini_imgs = Path(self.dest_dir, unpacking_folder.relative_to(self.path.parent))
+        loc_mini_imgs = Path(
+            self.dest_dir, unpacking_folder.relative_to(self.path.parent)
+        )
         pack_archive(loc_mini_imgs)
         shutil.rmtree(loc_mini_imgs)
 
