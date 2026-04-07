@@ -11,6 +11,7 @@ from mangamin.utils import exclude_folders, unpack_archive, convert_image, pack_
 class FileType(str, Enum):
     JPG = "image/jpeg"
     PNG = "image/png"
+    GIF = "image/gif"
     ZIP = "application/zip"
     RAR = "application/x-rar-compressed"
 
@@ -41,9 +42,10 @@ class MangaMin:
         match file_type.mime:
             case FileType.ZIP | FileType.RAR:
                 self.archive_processing(file)
-            case FileType.JPG | FileType.PNG:
+            case FileType.JPG | FileType.PNG | FileType.GIF:
                 self.image_processing(file)
             case _:
+                print(f"Unexpected error with the file {file.relative_to(self.path)}")
                 exit(2)
 
     def archive_processing(self, archive: Path) -> None:

@@ -6,9 +6,7 @@ from mangamin import MangaMin
 
 
 @click.command()
-@click.argument(
-    "path", type=Path, help="The path on the hard disk where the manga is stored."
-)
+@click.argument("path", type=Path)
 @click.option(
     "--quality",
     default=75,
